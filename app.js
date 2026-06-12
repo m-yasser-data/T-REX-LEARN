@@ -4,16 +4,16 @@ const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
 async function loginUser() {
     const emailInput = document.getElementById('email').value;
-        const passwordInput = document.getElementById('password').value;
+    const passwordInput = document.getElementById('password').value;
             
-                const { data, error } = await supabase.auth.signInWithPassword({
-                        email: emailInput,
-                                password: passwordInput,
-                                    });
+    const { data, error } = await supabase.auth.signInWithPassword({
+        email: emailInput,
+        password: passwordInput,
+    });
 
-                                        if (error) {
-                                                alert('فيه غلط في الإيميل أو الباسورد، ركز شوية!');
-                                                    } else {
-                                                            window.location.href = 'dashboard.html';
-                                                                }
-                                                                }
+    if (error) {
+        alert('النظام بيقولك الخطأ هو: ' + error.message);
+    } else {
+        window.location.href = 'dashboard.html';
+    }
+}
